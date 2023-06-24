@@ -1,9 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-
-interface props {
-  onButtonClick: () => void;
-}
+import Button from "react-bootstrap/Button";
 
 function OurNav() {
   return (
@@ -19,6 +16,14 @@ function OurNav() {
           />{" "}
           OC Manager
         </Navbar.Brand>
+        <Container>
+          <Button variant="dark" href="/view">
+            View
+          </Button>
+          <Button variant="dark" href="/create">
+            Create
+          </Button>
+        </Container>
       </Container>
     </Navbar>
   );
