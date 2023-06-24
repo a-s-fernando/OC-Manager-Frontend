@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
+import { isRouteErrorResponse } from "react-router-dom";
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -17,7 +18,7 @@ export default function ErrorPage() {
               <Alert.Heading>Oops!</Alert.Heading>
               <p>Sorry, an unexpected error has occurred.</p>
               <hr />
-              <p>{error.statusText || error.message}</p>
+              {isRouteErrorResponse(error) && <p>{error.statusText}</p>}
             </Alert>
           </div>
         </Col>
