@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
+import ReactLoading from "react-loading";
+import Row from "react-bootstrap/Row";
 import config from "../config.json";
 
 type Character = {
@@ -53,9 +55,13 @@ function ViewAll() {
     );
   }
   return loading ? (
-    <h2>
-      <em>loading...</em>
-    </h2>
+    <ReactLoading
+      className="mx-auto p-5"
+      type="bars"
+      color="#2B3035"
+      height="50%"
+      width="50%"
+    />
   ) : (
     displayCharacter()
   );
