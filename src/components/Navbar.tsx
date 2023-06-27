@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function OurNav() {
   return (
@@ -17,12 +18,14 @@ function OurNav() {
           OC Manager
         </Navbar.Brand>
         <Container>
-          <Button variant="dark" href="/view">
-            View
-          </Button>
-          <Button variant="dark" href="/create">
-            Create
-          </Button>
+          <ButtonGroup>
+            <Button variant="dark" href="/view">
+              View
+            </Button>
+            <Button variant="dark" href="/create">
+              Create
+            </Button>
+          </ButtonGroup>
         </Container>
       </Container>
     </Navbar>
