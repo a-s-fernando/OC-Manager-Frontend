@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import ReactLoading from "react-loading";
 import Row from "react-bootstrap/Row";
+import CharacterBrief from "../components/CharacterBrief";
 import config from "../config.json";
 
 type Character = {
@@ -42,14 +43,12 @@ function ViewAll() {
     return (
       <>
         <Container>
-          <h1>Characters</h1>
-          <ListGroup>
+          <h1 className="mt-1 mb-0">Characters</h1>
+          <Row>
             {characters.map((character: Character) => (
-              <ListGroup.Item key={character.id}>
-                {character.name}
-              </ListGroup.Item>
+              <CharacterBrief character={character} />
             ))}
-          </ListGroup>
+          </Row>
         </Container>
       </>
     );
