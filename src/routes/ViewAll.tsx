@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import ListGroup from "react-bootstrap/ListGroup";
 import ReactLoading from "react-loading";
 import Row from "react-bootstrap/Row";
 import CharacterBrief from "../components/CharacterBrief";
