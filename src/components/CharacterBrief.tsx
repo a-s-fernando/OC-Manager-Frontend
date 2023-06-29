@@ -7,7 +7,7 @@ interface Props {
 
 function CharacterBrief({ character }: Props) {
   return (
-    <Card style={{ width: "30%" }} className="mx-2 my-2">
+    <Card style={{ width: "30%" }} className="m-2">
       <Card.Img variant="top" src={character.profile} />
       <Card.Body>
         <Card.Title>
