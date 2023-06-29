@@ -45,7 +45,7 @@ function ViewAll() {
           <h1 className="mt-1 mb-0">Characters</h1>
           <Row>
             {characters.map((character: Character) => (
-              <CharacterBrief character={character} />
+              <CharacterBrief character={character} key={character.id} />
             ))}
           </Row>
         </Container>
