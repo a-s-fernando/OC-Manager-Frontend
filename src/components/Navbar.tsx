@@ -7,17 +7,19 @@ function OurNav() {
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">
-          <img
-            alt=""
-            src="https://i.ibb.co/SBwRNxq/00166-2450960517-white-background-removebg-preview-min.png"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />{" "}
+        <img
+          alt=""
+          src="https://i.ibb.co/SBwRNxq/00166-2450960517-white-background-removebg-preview-min.png"
+          width="38"
+          height="38"
+          className="d-inline-block align-top"
+          href="/"
+        />
+        <Navbar.Brand href="/" className="mx-3">
+          {" "}
           OC Manager
         </Navbar.Brand>
-        <Container>
+        <Container className="p-0">
           <ButtonGroup>
             <Button variant="dark" href="/view">
               View
