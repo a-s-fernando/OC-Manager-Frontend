@@ -1,22 +1,5 @@
 import Card from "react-bootstrap/Card";
-
-type Character = {
-  id: number;
-  name: string;
-  dob: string;
-  personality: string;
-  appearance: string;
-  background: string;
-  gender: string;
-  race: string;
-  ethnicity: string;
-  source: string;
-  profile: string;
-  relationships: string[];
-  images: string[];
-  dislikes: string[];
-  likes: string[];
-};
+import Character from "../customTypes";
 
 interface Props {
   character: Character;
