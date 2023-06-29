@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
 import Character from "../customTypes";
 import config from "../config.json";
+import CharacterFull from "../components/CharacterFull";
 
 function ViewOne() {
   const { id } = useParams();
@@ -38,11 +39,7 @@ function ViewOne() {
   }, [id]);
 
   function viewCharacter() {
-    return (
-      <div>
-        <h3>Character: {character.name}</h3>
-      </div>
-    );
+    return <CharacterFull character={character} />;
   }
 
   return loading ? (
