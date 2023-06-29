@@ -28,7 +28,7 @@ function CharacterBrief({ character }: Props) {
       <Card.Img variant="top" src={character.profile} />
       <Card.Body>
         <Card.Title>
-          <a className="link-light" href="/">
+          <a className="link-light" href={`/view/${character.id}`}>
             {character.name}
           </a>
         </Card.Title>

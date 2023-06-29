@@ -7,6 +7,7 @@ import OurNav from "./components/Navbar.tsx";
 import Create from "./routes/Create.tsx";
 import ViewAll from "./routes/ViewAll.tsx";
 import Root from "./routes/Root.tsx";
+import ViewOne from "./routes/ViewOne.tsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,15 @@ const router = createBrowserRouter([
       <>
         <OurNav />
         <Create />
+      </>
+    ),
+  },
+  {
+    path: "/view/:id",
+    element: (
+      <>
+        <OurNav />
+        <ViewOne />
       </>
     ),
   },
