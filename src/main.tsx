@@ -5,7 +5,7 @@ import ErrorPage from "./error-page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OurNav from "./components/Navbar.tsx";
 import Create from "./routes/Create.tsx";
-import View from "./routes/View.tsx";
+import ViewAll from "./routes/ViewAll.tsx";
 import Root from "./routes/Root.tsx";
 
 const router = createBrowserRouter([
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <OurNav />
-        <View />
+        <ViewAll />
       </>
     ),
   },
