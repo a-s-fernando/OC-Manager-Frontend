@@ -8,7 +8,9 @@ interface Props {
 function CharacterBrief({ character }: Props) {
   return (
     <Card style={{ width: "30%" }} className="m-2">
-      <Card.Img variant="top" src={character.profile} />
+      <a href={`/view/${character.id}`}>
+        <Card.Img variant="top" src={character.profile} />
+      </a>
       <Card.Body>
         <Card.Title>
           <a className="link-light" href={`/view/${character.id}`}>
