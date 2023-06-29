@@ -8,47 +8,34 @@ import Create from "./routes/Create.tsx";
 import ViewAll from "./routes/ViewAll.tsx";
 import Root from "./routes/Root.tsx";
 import ViewOne from "./routes/ViewOne.tsx";
+import RootContainer from "./components/RootContainer.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <OurNav />
-        <Root />
-      </>
-    ),
+    element: <RootContainer />,
+    children: [
+      {
+        path: "/",
+        element: <Root />,
+      },
+      {
+        path: "/view",
+        element: <ViewAll />,
+      },
+      {
+        path: "/create",
+        element: <Create />,
+      },
+      {
+        path: "/view/:id",
+        element: <ViewOne />,
+      },
+    ],
     errorElement: (
       <>
         <OurNav />
         <ErrorPage />
-      </>
-    ),
-  },
-  {
-    path: "/view",
-    element: (
-      <>
-        <OurNav />
-        <ViewAll />
-      </>
-    ),
-  },
-  {
-    path: "/create",
-    element: (
-      <>
-        <OurNav />
-        <Create />
-      </>
-    ),
-  },
-  {
-    path: "/view/:id",
-    element: (
-      <>
-        <OurNav />
-        <ViewOne />
       </>
     ),
   },
