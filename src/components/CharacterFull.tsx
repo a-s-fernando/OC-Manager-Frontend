@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
+import CharacterCard from "./CharacterCard";
 import Character from "../customTypes";
-import { Button, Carousel, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 interface Props {
   character: Character;
@@ -13,27 +14,7 @@ function CharacterFull({ character }: Props) {
         <Container>
           <Row>
             <Col className="p-0">
-              <Card style={{ width: "100%" }} className="m-0">
-                <Carousel interval={null}>
-                  {character.images.map((source: string) => (
-                    <Carousel.Item>
-                      <img className="d-block w-100" src={source} />
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
-                <Card.Body>
-                  <Card.Title className="text-light">
-                    {character.name}
-                  </Card.Title>
-                  <Card.Text>
-                    Sources: {character.source} <br />
-                    DoB: {character.dob.split("T")[0]} <br />
-                    Gender: {character.gender} <br />
-                    Ethnicity: {character.ethnicity} <br />
-                    Race: {character.race} <br />
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <CharacterCard character={character} />
             </Col>
             <Col className="p-0">
               <div className="mx-2">
