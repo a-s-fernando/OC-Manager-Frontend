@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import CharacterCard from "./CharacterCard";
-import Character from "../customTypes";
+import Character from "../CharacterType";
 import { Col, Container, Row } from "react-bootstrap";
 
 interface Props {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
-import Character from "../customTypes";
+import Character from "../CharacterType";
 import config from "../config.json";
 import CharacterFull from "../components/CharacterFull";
 

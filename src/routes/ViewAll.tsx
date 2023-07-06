@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import ReactLoading from "react-loading";
 import Row from "react-bootstrap/Row";
 import CharacterBrief from "../components/CharacterBrief";
-import Character from "../customTypes";
+import Character from "../CharacterType";
 import config from "../config.json";
 import FilterForm from "../components/FilterForm";
 
