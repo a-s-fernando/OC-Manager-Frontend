@@ -49,7 +49,11 @@ function CharacterFull({ character }: Props) {
 
               <div className="mx-2">
                 <h3>Relationships</h3>
-                <p>{character.relationships.join(", ")}</p>
+                <p>
+                  {character.relationships[0] !== " : "
+                    ? character.relationships.join(", ")
+                    : ""}
+                </p>
               </div>
             </Col>
           </Row>
