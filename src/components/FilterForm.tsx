@@ -25,7 +25,6 @@ function FilterForm({ onSubmit }: Props) {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Container>
-            <h3>Filters</h3>
             <Form onSubmit={onSubmit}>
               <Form.Group className="mb-3">
                 <Form.Label>Name</Form.Label>
