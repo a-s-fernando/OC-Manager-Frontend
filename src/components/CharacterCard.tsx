@@ -6,23 +6,20 @@ interface Props {
 }
 
 function CharacterCard({ character }: Props) {
+  let images = character.images;
+  if (images[0] === null) {
+    images = [
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    ];
+  }
   return (
     <Card style={{ width: "100%" }} className="m-0">
       <Carousel interval={null} touch={true}>
-        {character.images ? (
-          character.images.map((source: string) => (
-            <Carousel.Item key={source}>
-              <img className="d-block w-100" src={source} />
-            </Carousel.Item>
-          ))
-        ) : (
-          <Carousel.Item key="default-image">
-            <img
-              className="d-block w-100"
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-            />
+        {images.map((source: string) => (
+          <Carousel.Item key={source}>
+            <img className="d-block w-100" src={source} />
           </Carousel.Item>
-        )}
+        ))}
       </Carousel>
       <Card.Body>
         <Card.Title className="text-light">{character.name}</Card.Title>
