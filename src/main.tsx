@@ -9,6 +9,7 @@ import ViewAll from "./routes/ViewAll.tsx";
 import Root from "./routes/Root.tsx";
 import ViewOne from "./routes/ViewOne.tsx";
 import RootContainer from "./components/RootContainer.tsx";
+import Settings from "./routes/Settings.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/view",
         element: <ViewAll />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
       },
       {
         path: "/create",

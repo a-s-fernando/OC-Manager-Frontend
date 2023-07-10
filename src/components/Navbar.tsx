@@ -27,6 +27,9 @@ function OurNav() {
             <Button variant="dark" href="/create">
               Create
             </Button>
+            <Button variant="dark" href="/settings">
+              Settings
+            </Button>
           </ButtonGroup>
         </Container>
       </Container>
