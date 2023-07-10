@@ -29,7 +29,6 @@ function Create() {
     };
 
     const stringified = JSON.stringify(newCharacter);
-    console.log(stringified);
 
     const requestOptions = {
       method: "POST",
