@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function Settings() {
   const [error, setError] = useState<APIError | false>(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState("");
 
   async function onGenderSubmit(e: any) {
     e.preventDefault();
@@ -33,7 +33,7 @@ function Settings() {
       return response;
     }
     setError(false);
-    setSuccess(true);
+    setSuccess("Gender created successfully!");
     const response: object = data;
     return response;
   }
@@ -63,7 +63,7 @@ function Settings() {
       return response;
     }
     setError(false);
-    setSuccess(true);
+    setSuccess("Race created successfully!");
     const response: object = data;
     return response;
   }
@@ -79,7 +79,7 @@ function Settings() {
       )}
       {success ? (
         <Alert key="successAlert" variant="success">
-          Creation successful!
+          {success}
         </Alert>
       ) : (
         <></>
