@@ -152,6 +152,9 @@ function Settings() {
           onRaceSubmit={onRaceSubmit}
         />
         <h2>Delete existing</h2>
+        <p>
+          <i>WARNING: Will delete every character with the associated tags.</i>
+        </p>
         <SettingsDelete
           onGenderSubmit={onGenderDelete}
           onRaceSubmit={onRaceDelete}
