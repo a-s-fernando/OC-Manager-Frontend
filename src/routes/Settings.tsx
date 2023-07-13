@@ -1,5 +1,6 @@
 import { Alert, Container } from "react-bootstrap";
 import SettingsCreate from "../components/SettingsCreate";
+import SettingsDelete from "../components/SettingsDelete";
 import config from "../config.json";
 import APIError from "../APIErrorType";
 import { useState } from "react";
@@ -68,6 +69,66 @@ function Settings() {
     return response;
   }
 
+  async function onRaceDelete(e: any) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    const raceID = { id: String(formJson.race.valueOf()) };
+    const stringified = JSON.stringify(raceID);
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stringified,
+    };
+    const res = await fetch(`${config.host}/race`, requestOptions);
+    const data = await res.json();
+    if ("error" in data) {
+      const response: APIError = { error: true, message: data.message };
+      setError(response);
+      return response;
+    }
+    setError(false);
+    setSuccess("Race deleted successfully!");
+    const response: object = data;
+    return response;
+  }
+
+  async function onGenderDelete(e: any) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    const genderID = { id: String(formJson.gender.valueOf()) };
+    const stringified = JSON.stringify(genderID);
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stringified,
+    };
+    const res = await fetch(`${config.host}/gender`, requestOptions);
+    const data = await res.json();
+    if ("error" in data) {
+      const response: APIError = { error: true, message: data.message };
+      setError(response);
+      return response;
+    }
+    setError(false);
+    setSuccess("Gender deleted successfully!");
+    const response: object = data;
+    return response;
+  }
+
   return (
     <>
       {error ? (
@@ -91,7 +152,10 @@ function Settings() {
           onRaceSubmit={onRaceSubmit}
         />
         <h2>Delete existing</h2>
-        <p>WIP</p>
+        <SettingsDelete
+          onGenderSubmit={onGenderDelete}
+          onRaceSubmit={onRaceDelete}
+        />
       </Container>
     </>
   );
