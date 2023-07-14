@@ -9,14 +9,25 @@ import ReactLoading from "react-loading";
 interface Props {
   onGenderSubmit: (e: any) => Promise<object | APIError>;
   onRaceSubmit: (e: any) => Promise<object | APIError>;
+  onSourceSubmit: (e: any) => Promise<object | APIError>;
+  onImageSubmit: (e: any) => Promise<object | APIError>;
 }
 
-function SettingsDelete({ onGenderSubmit, onRaceSubmit }: Props) {
+function SettingsDelete({
+  onGenderSubmit,
+  onRaceSubmit,
+  onSourceSubmit,
+  onImageSubmit,
+}: Props) {
   const [loadingGenders, setLoadingGenders] = useState(false);
   const [loadingRaces, setLoadingRaces] = useState(false);
+  const [loadingSources, setLoadingSources] = useState(false);
+  const [loadingImages, setLoadingImages] = useState(false);
 
   const [genders, setGenders] = useState<Array<object>>([]);
   const [races, setRaces] = useState<Array<object>>([]);
+  const [sources, setSources] = useState<Array<object>>([]);
+  const [images, setImages] = useState<Array<object>>([]);
 
   useEffect(() => {
     setLoadingGenders(true);
@@ -33,9 +44,23 @@ function SettingsDelete({ onGenderSubmit, onRaceSubmit }: Props) {
       setRaces(data);
       setLoadingRaces(false);
     }
+    async function loadSources() {
+      const res = await fetch(`${config.host}/source`);
+      const data = await res.json();
+      setSources(data);
+      setLoadingSources(false);
+    }
+    async function loadImages() {
+      const res = await fetch(`${config.host}/image`);
+      const data = await res.json();
+      setImages(data);
+      setLoadingImages(false);
+    }
 
     loadGenders();
     loadRaces();
+    loadSources();
+    loadImages();
   }, []);
   function renderDelete() {
     return (
@@ -70,6 +95,50 @@ function SettingsDelete({ onGenderSubmit, onRaceSubmit }: Props) {
               {races.map((race: any) => (
                 <option value={race.id} key={`race${race.id}`}>
                   {race.name}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+
+          <Container>
+            <ButtonGroup>
+              <Button variant="secondary" type="submit">
+                Delete
+              </Button>
+            </ButtonGroup>
+          </Container>
+        </Form>
+
+        <Form onSubmit={onSourceSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Source</Form.Label>
+            <Form.Select name="source">
+              <option>Select a source</option>
+              {sources.map((source: any) => (
+                <option value={source.id} key={`source${source.id}`}>
+                  {source.name}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+
+          <Container>
+            <ButtonGroup>
+              <Button variant="secondary" type="submit">
+                Delete
+              </Button>
+            </ButtonGroup>
+          </Container>
+        </Form>
+
+        <Form onSubmit={onImageSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Image</Form.Label>
+            <Form.Select name="image">
+              <option>Select an image</option>
+              {images.map((image: any) => (
+                <option value={image.id} key={`image${image.id}`}>
+                  {image.url}
                 </option>
               ))}
             </Form.Select>

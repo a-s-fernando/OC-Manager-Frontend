@@ -69,6 +69,66 @@ function Settings() {
     return response;
   }
 
+  async function onSourceSubmit(e: any) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    const newSource = { name: String(formJson.source.valueOf()) };
+    const stringified = JSON.stringify(newSource);
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stringified,
+    };
+    const res = await fetch(`${config.host}/source`, requestOptions);
+    const data = await res.json();
+    if ("error" in data) {
+      const response: APIError = { error: true, message: data.message };
+      setError(response);
+      return response;
+    }
+    setError(false);
+    setSuccess("Source created successfully!");
+    const response: object = data;
+    return response;
+  }
+
+  async function onImageSubmit(e: any) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    const newImage = { imageURL: String(formJson.image.valueOf()) };
+    const stringified = JSON.stringify(newImage);
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stringified,
+    };
+    const res = await fetch(`${config.host}/image`, requestOptions);
+    const data = await res.json();
+    if ("error" in data) {
+      const response: APIError = { error: true, message: data.message };
+      setError(response);
+      return response;
+    }
+    setError(false);
+    setSuccess("Image created successfully!");
+    const response: object = data;
+    return response;
+  }
+
   async function onRaceDelete(e: any) {
     e.preventDefault();
 
@@ -129,6 +189,66 @@ function Settings() {
     return response;
   }
 
+  async function onSourceDelete(e: any) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    const sourceID = { id: String(formJson.source.valueOf()) };
+    const stringified = JSON.stringify(sourceID);
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stringified,
+    };
+    const res = await fetch(`${config.host}/source`, requestOptions);
+    const data = await res.json();
+    if ("error" in data) {
+      const response: APIError = { error: true, message: data.message };
+      setError(response);
+      return response;
+    }
+    setError(false);
+    setSuccess("Source deleted successfully!");
+    const response: object = data;
+    return response;
+  }
+
+  async function onImageDelete(e: any) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formJson = Object.fromEntries(formData.entries());
+    const imageID = { id: String(formJson.image.valueOf()) };
+    const stringified = JSON.stringify(imageID);
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stringified,
+    };
+    const res = await fetch(`${config.host}/image`, requestOptions);
+    const data = await res.json();
+    if ("error" in data) {
+      const response: APIError = { error: true, message: data.message };
+      setError(response);
+      return response;
+    }
+    setError(false);
+    setSuccess("Image deleted successfully!");
+    const response: object = data;
+    return response;
+  }
+
   return (
     <>
       {error ? (
@@ -150,6 +270,8 @@ function Settings() {
         <SettingsCreate
           onGenderSubmit={onGenderSubmit}
           onRaceSubmit={onRaceSubmit}
+          onSourceSubmit={onSourceSubmit}
+          onImageSubmit={onImageSubmit}
         />
         <h2>Delete existing</h2>
         <p>
@@ -158,6 +280,8 @@ function Settings() {
         <SettingsDelete
           onGenderSubmit={onGenderDelete}
           onRaceSubmit={onRaceDelete}
+          onSourceSubmit={onSourceDelete}
+          onImageSubmit={onImageDelete}
         />
       </Container>
     </>
