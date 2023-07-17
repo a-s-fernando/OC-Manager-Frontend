@@ -1,6 +1,14 @@
 import Card from "react-bootstrap/Card";
 import Character from "../CharacterType";
-import { Carousel, Col, Container, Form, Row } from "react-bootstrap";
+import {
+  Button,
+  ButtonGroup,
+  Carousel,
+  Col,
+  Container,
+  Form,
+  Row,
+} from "react-bootstrap";
 import APIError from "../APIErrorType";
 import { useEffect, useState } from "react";
 import config from "../config.json";
@@ -8,10 +16,11 @@ import ReactLoading from "react-loading";
 
 interface Props {
   character: Character;
-  onSubmit: (e: any) => Promise<Character | APIError>;
+  OnSubmitLeftCol: (e: any) => Promise<Character | APIError>;
+  OnSubmitRightCol: (e: any) => Promise<Character | APIError>;
 }
 
-function EditPage({ character, onSubmit }: Props) {
+function EditPage({ character, OnSubmitLeftCol, OnSubmitRightCol }: Props) {
   let images = character.images;
   if (images[0] === null) {
     images = [
@@ -59,18 +68,18 @@ function EditPage({ character, onSubmit }: Props) {
                     ))}
                   </Carousel>
                   <Card.Body>
-                    <Card.Title className="text-light">
-                      <Form.Group className="mb-3">
-                        <Form.Control
-                          type="text"
-                          name="name"
-                          defaultValue={character.name}
-                        />
-                      </Form.Group>
-                    </Card.Title>
-                    <Card.Text>
-                      Sources: {character.source} <br />
-                      <Form onSubmit={onSubmit}>
+                    <Form onSubmit={OnSubmitLeftCol}>
+                      <Card.Title className="text-light">
+                        <Form.Group className="mb-3">
+                          <Form.Control
+                            type="text"
+                            name="name"
+                            defaultValue={character.name}
+                          />
+                        </Form.Group>
+                      </Card.Title>
+                      <Card.Text>
+                        Sources: {character.source} <br />
                         <Form.Group className="mb-3">
                           <Form.Label>DoB</Form.Label>
                           <Form.Control
@@ -108,54 +117,76 @@ function EditPage({ character, onSubmit }: Props) {
                           <Form.Label>Ethnicity</Form.Label>
                           <Form.Control
                             type="text"
-                            name="race"
+                            name="ethnicity"
                             defaultValue={character.ethnicity}
                           />
                         </Form.Group>
-                      </Form>
-                    </Card.Text>
+                      </Card.Text>
+                      <Container>
+                        <ButtonGroup>
+                          <Button variant="secondary" type="submit">
+                            Save
+                          </Button>
+                          <Button variant="secondary" type="reset">
+                            Reset
+                          </Button>
+                        </ButtonGroup>
+                      </Container>
+                    </Form>
                   </Card.Body>
                 </Card>
               </Col>
               <Col className="p-0">
-                <div className="mx-2">
-                  <h3 className="mt-2">Personality</h3>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      name="personality"
-                      defaultValue={character.personality}
-                    />
-                  </Form.Group>
-                </div>
-                <hr className="my-2" />
+                <Form onSubmit={OnSubmitRightCol}>
+                  <div className="mx-2">
+                    <h3 className="mt-2">Personality</h3>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        name="personality"
+                        defaultValue={character.personality}
+                      />
+                    </Form.Group>
+                  </div>
+                  <hr className="my-2" />
 
-                <div className="mx-2">
-                  <h3>Appearance</h3>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      name="appearance"
-                      defaultValue={character.appearance}
-                    />
-                  </Form.Group>{" "}
-                </div>
-                <hr className="my-2" />
+                  <div className="mx-2">
+                    <h3>Appearance</h3>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        name="appearance"
+                        defaultValue={character.appearance}
+                      />
+                    </Form.Group>{" "}
+                  </div>
+                  <hr className="my-2" />
 
-                <div className="mx-2">
-                  <h3>Background</h3>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      name="background"
-                      defaultValue={character.background}
-                    />
-                  </Form.Group>{" "}
-                </div>
-                <hr className="my-2" />
+                  <div className="mx-2">
+                    <h3>Background</h3>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        name="background"
+                        defaultValue={character.background}
+                      />
+                    </Form.Group>{" "}
+                  </div>
+                  <hr className="my-2" />
+                  <Container>
+                    <ButtonGroup>
+                      <Button variant="secondary" type="submit">
+                        Save
+                      </Button>
+                      <Button variant="secondary" type="reset">
+                        Reset
+                      </Button>
+                    </ButtonGroup>
+                  </Container>
+                </Form>
 
                 <div className="mx-2">
                   <h3>Likes</h3>

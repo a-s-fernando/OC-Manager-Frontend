@@ -5,8 +5,10 @@ type Character = {
   personality: string;
   appearance: string;
   background: string;
-  gender: string | number;
-  race: string | number;
+  gender: string;
+  genderid: number;
+  race: string;
+  raceid: number;
   ethnicity: string;
   source: string;
   profile: string;
