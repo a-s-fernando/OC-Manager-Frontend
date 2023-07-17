@@ -10,6 +10,7 @@ import Root from "./routes/Root.tsx";
 import ViewOne from "./routes/ViewOne.tsx";
 import RootContainer from "./components/RootContainer.tsx";
 import Settings from "./routes/Settings.tsx";
+import Edit from "./routes/Edit.tsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/view/:id",
         element: <ViewOne />,
+      },
+      {
+        path: "/edit/:id",
+        element: <Edit />,
       },
     ],
     errorElement: (
